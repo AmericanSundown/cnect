@@ -34,14 +34,16 @@
             </thead>
             <tbody>
             @foreach($members as $member)
-                <tr>
-                    <td>{{$member->rank}}</td>
-                    <td>{{$member->nickname}}</td>
-                    <td>{{$member->total}}</td>
-                    <td>{{$member->score1}}</td>
-                    <td>{{$member->score2}}</td>
-                    <td>{{$member->score3}}</td>
-                </tr>
+
+                    <tr class="{{$member->css()}}">
+                        <td>{{$member->rank}}</td>
+                        <td>{{$member->nickname}}</td>
+                        <td>{{$member->total}}</td>
+                        <td>{{$member->score1}}</td>
+                        <td>{{$member->score2}}</td>
+                        <td>{{$member->score3}}</td>
+                    </tr>
+
             @endforeach
 
             </tbody>
@@ -50,8 +52,6 @@
             Updated {{$updated_at}}
         </div>
     </div>
-
-
 
 
 </div>

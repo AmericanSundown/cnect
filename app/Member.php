@@ -34,4 +34,19 @@ class Member extends Model
 
 
     }
+
+    public function css()
+    {
+        $css = "";
+        if ($this->rank == 1) {
+            $css .= " text-3xl";
+        }
+        if ($this->rank == 2) {
+            $css .= " text-2xl";
+        }
+        if ($this->rank == 3) {
+            $css .= " text-xl";
+        }
+        return ($css);
+    }
 }
