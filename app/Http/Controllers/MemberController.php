@@ -14,7 +14,10 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::orderBy('total', 'desc')->orderBy('nickname', 'asc')->get();
+        $updated_at = Member::orderBy('updated_at', 'desc')->first()["updated_at"]->diffForHumans();
+
+        return view('welcome', compact(['members','updated_at']));
     }
 
     /**

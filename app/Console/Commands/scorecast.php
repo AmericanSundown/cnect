@@ -23,6 +23,8 @@ class scorecast extends Command
      */
     protected $description = 'Retrieve data from scorecast';
 
+    private $processMembers = [];
+
     /**
      * Create a new command instance.
      *
@@ -31,7 +33,10 @@ class scorecast extends Command
     public function __construct()
     {
         parent::__construct();
+
     }
+
+
 
     /**
      * Execute the console command.
@@ -46,7 +51,6 @@ class scorecast extends Command
         ], 'scorecast.fr');
 
 
-        var_dump("hello cnect");
         $client = new Client();
 
         $isPrimary = true;
@@ -79,19 +83,21 @@ class scorecast extends Command
 
             if ($isPrimary == false) {
                 //Check for Christophe
-                if ($result[1] == "Christophe" || $result[1] == "ansergey" ) {
+                if (in_array($result[1], $this->processMembers)){
+                //if ($result[1] == "Christophe" || $result[1] == "ansergey" ) {
                     var_dump("found " .$result[1]. ", not doing anything with him");
                     continue;
                 }
             }
 
-            var_dump($result[1]);
+
             $member = Member::firstOrNew(['nickname' => $result[1]]);
             $member->total = $result[2];
             $member->score1 = $result[3] == '' ? 0 : $result[3];
             $member->score2 = $result[4] == '' ? 0 : $result[4];
             $member->score3 = $result[5] == '' ? 0 : $result[5];
             $member->save();
+            array_push($this->processMembers, $member->nickname);
 
 
         }
