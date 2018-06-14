@@ -11,6 +11,10 @@
 |
 */
 
+use App\Member;
+
 Route::get('/', function () {
-    return view('welcome');
+
+    $members = Member::all();
+    return view('welcome', compact('members'));
 });
