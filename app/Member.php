@@ -49,4 +49,11 @@ class Member extends Model
         }
         return ($css);
     }
+
+    public static function cleanNickname($nickname){
+
+        return str_replace("\"","",$nickname);
+
+
+    }
 }

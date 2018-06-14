@@ -42,4 +42,22 @@ class MemberTest extends TestCase
 
 
     }
+
+
+        /** @test */
+    public function it_should_clean_nickname()
+    {
+
+        //$nickname = "Foo";
+        //self::assertEquals("Foo",Member::cleanNickname($nickname));
+
+        $nickname = "\"Foo\"";
+        self::assertEquals("Foo",Member::cleanNickname($nickname));
+
+
+
+
+    }
+
+
 }

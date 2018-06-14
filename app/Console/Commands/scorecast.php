@@ -93,7 +93,7 @@ class scorecast extends Command
             }
 
             //Update or Create the Member
-            $member = Member::firstOrNew(['nickname' => $result[1]]);
+            $member = Member::firstOrNew(['nickname' => Member::cleanNickname($result[1])]);
             $member->total = $result[2];
             $member->score1 = $result[3] == '' ? 0 : $result[3];
             $member->score2 = $result[4] == '' ? 0 : $result[4];
