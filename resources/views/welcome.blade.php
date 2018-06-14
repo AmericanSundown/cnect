@@ -33,9 +33,9 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($members as $key=>$member)
+            @foreach($members as $member)
                 <tr>
-                    <td>{{++$key}}</td>
+                    <td>{{$member->rank}}</td>
                     <td>{{$member->nickname}}</td>
                     <td>{{$member->total}}</td>
                     <td>{{$member->score1}}</td>

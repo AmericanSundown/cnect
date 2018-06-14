@@ -61,7 +61,8 @@ class scorecast extends Command
             $isPrimary = false;
         }
 
-        //Compute the ranks
+        Member::computeRanks();
+
 
 
     }
@@ -102,5 +103,7 @@ class scorecast extends Command
 
 
         }
+
+
     }
 }
