@@ -24,6 +24,7 @@
             <thead class="bg-blue text-white">
             <tr>
 
+                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Total</th>
                 <th scope="col">Right Winner & Right Score</th>
@@ -32,8 +33,9 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($members as $member)
+            @foreach($members as $key=>$member)
                 <tr>
+                    <td>{{++$key}}</td>
                     <td>{{$member->nickname}}</td>
                     <td>{{$member->total}}</td>
                     <td>{{$member->score1}}</td>
