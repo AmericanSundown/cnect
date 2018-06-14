@@ -37,7 +37,6 @@ class scorecast extends Command
     }
 
 
-
     /**
      * Execute the console command.
      *
@@ -62,6 +61,8 @@ class scorecast extends Command
             $isPrimary = false;
         }
 
+        //Compute the ranks
+
 
     }
 
@@ -73,24 +74,24 @@ class scorecast extends Command
     {
         $results = explode("\n", $res->getBody());
 
+        //Clean the data by removing the header and the last line
         array_shift($results);
         array_pop($results);
 
-        //Update or Create
 
         foreach ($results as $line) {
             $result = explode(";", $line);
 
             if ($isPrimary == false) {
                 //Check for Christophe
-                if (in_array($result[1], $this->processMembers)){
-                //if ($result[1] == "Christophe" || $result[1] == "ansergey" ) {
-                    var_dump("found " .$result[1]. ", not doing anything with him");
+                if (in_array($result[1], $this->processMembers)) {
+                    //if ($result[1] == "Christophe" || $result[1] == "ansergey" ) {
+                    var_dump("found " . $result[1] . ", not doing anything with him");
                     continue;
                 }
             }
 
-
+            //Update or Create the Member
             $member = Member::firstOrNew(['nickname' => $result[1]]);
             $member->total = $result[2];
             $member->score1 = $result[3] == '' ? 0 : $result[3];
