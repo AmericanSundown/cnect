@@ -39,7 +39,7 @@ class Member extends Model
     {
         $css = "";
         if ($this->rank == 1) {
-            $css .= " text-3xl";
+            $css .= " text-2xl uppercase ";
         }
         if ($this->rank == 2) {
             $css .= " text-2xl";
