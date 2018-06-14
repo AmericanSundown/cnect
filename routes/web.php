@@ -15,6 +15,8 @@ use App\Member;
 
 Route::get('/', function () {
 
-    $members = Member::all();
-    return view('welcome', compact('members'));
+    $members = Member::orderBy('total', 'desc')->orderBy('nickname', 'asc')->get();
+    $updated_at = Member::latest()->first()["updated_at"]->diffForHumans();
+
+    return view('welcome', compact(['members','updated_at']));
 });

@@ -9,17 +9,48 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
 </head>
 <body>
 <div>
-    Hello !
-    <ul>
-        @foreach($members as $member)
-            <li>{{$member->nickname}} - {{$member->updated_at}}</li>
-        @endforeach
-    </ul>
+    <div class="flex justify-center text-3xl">
+        R3 Scoreboard
+    </div>
+    <div class="container mx-auto">
+
+        <table class="table">
+            <thead class="bg-blue text-white">
+            <tr>
+
+                <th scope="col">Name</th>
+                <th scope="col">Total</th>
+                <th scope="col">Right Winner & Right Score</th>
+                <th scope="col">Right Winner & Right Score Difference</th>
+                <th scope="col">Right Winner</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($members as $member)
+                <tr>
+                    <td>{{$member->nickname}}</td>
+                    <td>{{$member->total}}</td>
+                    <td>{{$member->score1}}</td>
+                    <td>{{$member->score2}}</td>
+                    <td>{{$member->score3}}</td>
+                </tr>
+            @endforeach
+
+            </tbody>
+        </table>
+        <div class="float-right mb-8">
+            Updated {{$updated_at}}
+        </div>
+    </div>
+
+
+
 
 </div>
 </body>
