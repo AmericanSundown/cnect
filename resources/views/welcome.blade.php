@@ -17,7 +17,7 @@
     Hello !
     <ul>
         @foreach($members as $member)
-            <li>{{$member->nickname}}</li>
+            <li>{{$member->nickname}} - {{$member->updated_at}}</li>
         @endforeach
     </ul>
 
