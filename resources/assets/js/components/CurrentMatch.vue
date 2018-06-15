@@ -33,7 +33,7 @@
     export default {
         methods: {
             loadData: function () {
-                axios.get(`https://worldcup.sfg.io/matches/current`)
+                axios.get(`https://world-cup-json.herokuapp.com/matches/current`)
                     .then(response => {
                         // JSON responses are automatically parsed.
 
