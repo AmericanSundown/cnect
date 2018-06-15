@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('cnect:scorecast')->everyMinute();
+        $schedule->command('cnect:snapshot')->hourly();
     }
 
     /**
