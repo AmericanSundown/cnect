@@ -52,8 +52,27 @@ class MemberTest extends TestCase
         //self::assertEquals("Foo",Member::cleanNickname($nickname));
 
         $nickname = "\"Foo\"";
-        self::assertEquals("Foo",Member::cleanNickname($nickname));
+        $this->assertEquals("Foo",Member::cleanNickname($nickname));
 
+
+
+
+    }
+
+        /** @test */
+    public function it_should_detect_humans_and_bots()
+    {
+
+        $nickname = "User A";
+        $this->assertEquals("Human",Member::getType($nickname));
+        $nickname = "ED-209";
+        $this->assertEquals("Robot",Member::getType($nickname));
+        $nickname = "R2-D2";
+        $this->assertEquals("Robot",Member::getType($nickname));
+        $nickname = "Robby";
+        $this->assertEquals("Robot",Member::getType($nickname));
+        $nickname = "T-1000";
+        $this->assertEquals("Robot",Member::getType($nickname));
 
 
 

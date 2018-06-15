@@ -38,15 +38,31 @@ class Member extends Model
     public function css()
     {
         $css = "";
-        if ($this->rank == 1) {
-            $css .= " text-2xl uppercase ";
+
+
+        if($this->type=="Robot"){
+            $css .= " bg-grey-darkest text-green text-md font-mono";
+        } else {
+
+
+            switch ($this->rank) {
+                case 1:
+                    $css .= " bg-blue-dark text-xl uppercase text-white";
+                    break;
+                case 2:
+                    $css .= " bg-blue text-xl text-white";
+                    break;
+                case 3:
+                    $css .= " bg-blue-light text-xl text-white";
+                    break;
+                default:
+                    $css .= " bg-blue-lighter text-black";
+                    break;
+            }
+
+
         }
-        if ($this->rank == 2) {
-            $css .= " text-2xl";
-        }
-        if ($this->rank == 3) {
-            $css .= " text-xl";
-        }
+
         return ($css);
     }
 
@@ -54,6 +70,12 @@ class Member extends Model
 
         return str_replace("\"","",$nickname);
 
+    }
+
+    public static function getType($nickname){
+
+        $robots = ["ED-209","R2-D2","Robby","T-1000"];
+        return in_array($nickname,$robots)?"Robot":"Human";
 
     }
 }

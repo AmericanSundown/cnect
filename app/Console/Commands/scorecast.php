@@ -15,7 +15,7 @@ class scorecast extends Command
      *
      * @var string
      */
-    protected $signature = 'cnect:scorecast';
+    protected $signature = 'cnect:scorecast {--force : force the update}';
 
     /**
      * The console command description.
@@ -46,9 +46,15 @@ class scorecast extends Command
     public function handle()
     {
 
-        $hour = Carbon::now()->hour;
-        //If hour is before 14h or after 23h, do nothing
-        if($hour<12 || $hour > 21) return;
+
+        $force = $this->option('force');
+        var_dump($force);
+        if($force == false){
+            $hour = Carbon::now()->hour;
+            //If hour is before 14h or after 23h, do nothing
+            if($hour<12 || $hour > 21) return;
+        }
+
 
 
 
@@ -93,8 +99,7 @@ class scorecast extends Command
             if ($isPrimary == false) {
                 //Check for Christophe
                 if (in_array($result[1], $this->processMembers)) {
-                    //if ($result[1] == "Christophe" || $result[1] == "ansergey" ) {
-                    var_dump("found " . $result[1] . ", not doing anything with him");
+                    var_dump("found " . $result[1] . ", not doing anything with him as he already exists");
                     continue;
                 }
             }
@@ -105,6 +110,7 @@ class scorecast extends Command
             $member->score1 = $result[3] == '' ? 0 : $result[3];
             $member->score2 = $result[4] == '' ? 0 : $result[4];
             $member->score3 = $result[5] == '' ? 0 : $result[5];
+            $member->type = Member::getType($result[1]);
             $member->save();
             array_push($this->processMembers, $member->nickname);
 
