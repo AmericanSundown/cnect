@@ -36,8 +36,13 @@
                 axios.get(`https://worldcup.sfg.io/matches/current`)
                     .then(response => {
                         // JSON responses are automatically parsed.
-                        this.match = response.data[0];
-                        console.log(this.match)
+
+                        if (response.data === undefined || response.data.length == 0) {
+                            this.match = null;
+                        } else {
+                            this.match = response.data[0];
+                        }
+
                     })
                     .catch(e => {
                         this.errors.push(e)
