@@ -52,7 +52,7 @@ class scorecast extends Command
         if($force == false){
             $hour = Carbon::now()->hour;
             //If hour is before 14h or after 23h, do nothing
-            if($hour<12 || $hour > 21) return;
+            if($hour<10 || $hour > 22) return;
         }
 
 
