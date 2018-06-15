@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Member;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
@@ -44,6 +45,12 @@ class scorecast extends Command
      */
     public function handle()
     {
+
+        $hour = Carbon::now()->hour;
+        //If hour is before 14h or after 23h, do nothing
+        if($hour<12 || $hour > 21) return;
+
+
 
         $cookieJar = CookieJar::fromArray([
             '__utna' => env('SCORECAST_COOKIE')
