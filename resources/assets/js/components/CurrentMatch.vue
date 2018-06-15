@@ -2,7 +2,7 @@
     <div class="container mx-auto">
 
         <div class="flex justify-center">
-            <div class="w-1/3 justify-center bg-blue-darker" v-if="match">
+            <div class="w-full md:w-2/3 justify-center bg-blue-darker" v-if="match">
                 <div class="text-white flex justify-center bg-blue-darkest">{{match.time}}</div>
                 <div class="flex justify-center text-white">
                 <span class="w-1/2 text-right">
