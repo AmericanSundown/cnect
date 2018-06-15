@@ -5,21 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>{{env('APP_NAME')}}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <script>
+        window.App = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => Auth::user()
+        ]) !!};
+
+
+    </script>
 
 </head>
 <body>
-<div>
+<div id="app">
     <div class="flex justify-center text-3xl mb-2 mt-2">
         R3 Scoreboard
     </div>
-    <div class="container mx-auto">
 
+
+    <current-match></current-match>
+
+
+    <div class="container mx-auto">
 
 
         <table class="table">
@@ -37,27 +53,27 @@
             <tbody>
             @foreach($members as $member)
 
-                    <tr class="{{$member->css()}}">
-                        <td>{{$member->rank}}</td>
-                        <td>
-                            <div class="flex">
-                                @if($member->type == "Robot")
-                                    <div class="leading-none mr-2">
-                                    <img src="{{asset('img/robot24.png')}}"  height="20px" alt="" />
+                <tr class="{{$member->css()}}">
+                    <td>{{$member->rank}}</td>
+                    <td>
+                        <div class="flex">
+                            @if($member->type == "Robot")
+                                <div class="leading-none mr-2">
+                                    <img src="{{asset('img/robot24.png')}}" height="20px" alt=""/>
                                 </div>
-                                @endif
-                                <div class="align-bottom">
-                                    {{$member->nickname}}
-                                </div>
+                            @endif
+                            <div class="align-bottom">
+                                {{$member->nickname}}
                             </div>
+                        </div>
 
 
-                        </td>
-                        <td>{{$member->total}}</td>
-                        <td>{{$member->score1}}</td>
-                        <td>{{$member->score2}}</td>
-                        <td>{{$member->score3}}</td>
-                    </tr>
+                    </td>
+                    <td>{{$member->total}}</td>
+                    <td>{{$member->score1}}</td>
+                    <td>{{$member->score2}}</td>
+                    <td>{{$member->score3}}</td>
+                </tr>
 
             @endforeach
 
@@ -70,5 +86,8 @@
 
 
 </div>
+
+<script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>
