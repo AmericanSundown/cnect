@@ -14,7 +14,7 @@
 
         <table class="table">
             <thead class="bg-blue text-white">
-            <tr>
+            <tr align="center">
 
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
@@ -28,7 +28,7 @@
             @foreach($members as $member)
 
                 <tr class="{{$member->css()}}">
-                    <td>{{$member->rank}}</td>
+                    <td align="center">{{$member->rank}}</td>
                     <td>
                         <div class="flex">
                             @if($member->type == "Robot")
@@ -43,10 +43,10 @@
 
 
                     </td>
-                    <td>{{$member->total}}</td>
-                    <td>{{$member->score1}}</td>
-                    <td>{{$member->score2}}</td>
-                    <td>{{$member->score3}}</td>
+                    <td align="center">{{$member->total}}</td>
+                    <td align="center">{{$member->score1}}</td>
+                    <td align="center">{{$member->score2}}</td>
+                    <td align="center">{{$member->score3}}</td>
                 </tr>
 
             @endforeach
