@@ -14,3 +14,4 @@
 use App\Member;
 
 Route::get('/', 'MemberController@index');
+Route::get('/stats', 'StatisticsController@index');

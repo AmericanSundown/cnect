@@ -17,7 +17,7 @@ class MemberController extends Controller
         $members = Member::getRanked();
         $updated_at = Member::orderBy('updated_at', 'desc')->first()["updated_at"]->diffForHumans();
 
-        return view('welcome', compact(['members','updated_at']));
+        return view('home', compact(['members','updated_at']));
     }
 
     /**
