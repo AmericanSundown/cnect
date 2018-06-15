@@ -33,7 +33,7 @@
     export default {
         methods: {
             loadData: function () {
-                axios.get(`http://worldcup.sfg.io/matches/current`)
+                axios.get(`https://worldcup.sfg.io/matches/current`)
                     .then(response => {
                         // JSON responses are automatically parsed.
                         this.match = response.data[0];
