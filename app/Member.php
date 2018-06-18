@@ -41,7 +41,7 @@ class Member extends Model
 
 
         if($this->type=="Robot"){
-            $css .= " bg-grey-darkest text-green text-md font-mono";
+            $css .= " bg-grey-darkest text-green text-md font-mono opacity-75";
         } else {
 
 
