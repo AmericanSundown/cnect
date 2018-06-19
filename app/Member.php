@@ -32,9 +32,9 @@ class Member extends Model
                     $total = $member->total;
                 }
             }
-            if ($member->type == "Robot") {
-                $rank = 0;
-            }
+//            if ($member->type == "Robot") {
+  //              $rank = 0;
+    //        }
 
             //var_dump($member->nickname . ' - ' . $member->total . ' - ' . $rank . ' - ' . $member->type);
             Member::where('nickname', 'LIKE', $member->nickname)->update(['rank' => $rank]);
