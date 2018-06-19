@@ -28,7 +28,13 @@
             @foreach($members as $member)
 
                 <tr class="{{$member->css()}}">
-                    <td align="center">{{$member->rank}}</td>
+                    <td align="center">
+                        @if($member->type == "Robot")
+                            ---
+                            @else
+                            {{$member->rank}}
+                            @endif
+                        </td>
                     <td>
                         <div class="flex">
                             @if($member->type == "Robot")

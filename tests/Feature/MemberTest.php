@@ -43,6 +43,30 @@ class MemberTest extends TestCase
 
     }
 
+    /** @test */
+    public function it_should_not_calculate_ranking_for_robots()
+    {
+        create('App\Member',['total'=>10]);
+        create('App\Member',['total'=>8, 'type'=>'Robot']);
+        create('App\Member',['total'=>6]);
+        create('App\Member',['total'=>4]);
+        create('App\Member',['total'=>4]);
+
+
+        Member::computeRanks();
+
+        $members = Member::getRanked();
+
+        $this->assertEquals(1,$members[0]->rank);
+        $this->assertEquals("Robot", $members[1]->type);
+        $this->assertEquals("Human", $members[2]->type);
+        $this->assertEquals(2, $members[2]->rank);
+        $this->assertEquals(3, $members[3]->rank);
+        $this->assertEquals(3, $members[4]->rank);
+
+
+    }
+
 
         /** @test */
     public function it_should_clean_nickname()
