@@ -30,7 +30,7 @@
                 <tr class="{{$member->css()}}">
                     <td align="center">
                         @if($member->type == "Robot")
-                            ---
+                            -
                             @else
                             {{$member->rank}}
                             @endif
