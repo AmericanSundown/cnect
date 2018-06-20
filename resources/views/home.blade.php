@@ -31,10 +31,20 @@
                     <td align="center">
                         @if($member->type == "Robot")
                             -
+                        @else
+
+                            @if($member->rank == 1)
+                                <img src="{{asset('img/medal-gold.png')}}" height="20px" alt=""/>
+                            @elseif($member->rank == 2)
+                                <img src="{{asset('img/medal-silver.png')}}" height="20px" alt=""/>
+                            @elseif($member->rank == 3)
+                                <img src="{{asset('img/medal-bronze.png')}}" height="20px" alt=""/>
                             @else
-                            {{$member->rank}}
+                                {{$member->rank}}
                             @endif
-                        </td>
+
+                        @endif
+                    </td>
                     <td>
                         <div class="flex">
                             @if($member->type == "Robot")
