@@ -10,7 +10,7 @@ class Member extends Model
 
     public static function getRanked()
     {
-        return Member::orderBy('total', 'desc')->orderBy('type','asc')->orderBy('nickname', 'asc')->get();
+        return Member::orderBy('total', 'desc')->orderBy('type','asc')->orderBy('score1', 'desc')->orderBy('nickname', 'asc')->get();
 
     }
 
