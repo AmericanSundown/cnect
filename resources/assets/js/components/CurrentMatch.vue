@@ -2,9 +2,11 @@
     <div class="container mx-auto">
 
         <div class="flex justify-center">
-            <div class="w-full md:w-2/3 justify-center bg-blue-darker" v-if="match">
-                <div class="text-white flex justify-center bg-blue-darkest">{{match.time}}</div>
-                <div class="flex justify-center text-white">
+            <div class="w-full md:w-2/3 justify-center bg-blue-darker" v-if="matches">
+                <div class="text-white flex justify-center bg-blue-darkest">{{matches[0].time}}</div>
+
+
+                <div class="flex justify-center text-white" v-for="match in matches">
                 <span class="w-1/2 text-right">
                         {{match.home_team.country}}
                     <span class="text-2xl ml-2 mr-2">
@@ -38,11 +40,12 @@
                         // JSON responses are automatically parsed.
 
                         if (response.data === undefined || response.data.length == 0) {
-                            this.match = null;
+                            this.matches = null;
                         } else {
-                            this.match = response.data[0];
+                            this.matches = response.data;
                         }
 
+                        console.log(this.matches);
                     })
                     .catch(e => {
                         this.errors.push(e)
@@ -60,7 +63,7 @@
         },
         data() {
             return {
-                match: null,
+                matches: null,
                 errors: []
             }
         },
